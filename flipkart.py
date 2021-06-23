@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
-import sendgrid
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 import os
 
 def get_current_price():
