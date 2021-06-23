@@ -36,17 +36,11 @@ def put_current_price(price):
 	file.close()
 
 def mail_me(curr_price,previous_price):
-	#print("mail_me")
-	#print(f"mailing {curr_price} {previous_price}")
-	try:
-		s = smtplib.SMTP('smtp.gmail.com', 587)
-		s.starttls()
-		s.login("mathewsamalp@gmail.com", "Am@190603")
-		message=f"Price droped in flipkart from {previous_price} to {curr_price}"
-		s.sendmail("mathewsamalp@gmail.com", "amalpmathews2003@gmail.com", message)
-		s.quit()
-	except:
-		print("mail not send")
+	sg = sendgrid.SendGridAPIClient(os.environ['SENDGRID_API_KEY'])
+	message = Mail(from_email='example@example.com', to_emails='example@example.com',
+                           subject='Example Subject ', html_content='<strong>and easy to do anywhere, even with Python</strong>')
+	response = sg.send(message)
+
 	
 def main():
 	#print("main")
