@@ -51,8 +51,8 @@ def mail_me(curr_price,previous_price):
 
 def main():
 	#print("main")
-	curr_price=int(get_current_price())
-	previous_price=int(get_previous_prices())
+	curr_price=int(float(get_current_price()))
+	previous_price=int(float(get_previous_prices()))
 	if(curr_price<previous_price):
 		mail_me(curr_price,previous_price)
 	else:
