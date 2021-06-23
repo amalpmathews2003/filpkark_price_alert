@@ -46,8 +46,7 @@ def mail_me(curr_price,previous_price):
 		s.sendmail("mathewsamalp@gmail.com", "amalpmathews2003@gmail.com", message)
 		s.quit()
 	except:
-		pass
-		#print("mail not send")
+		print("mail not send")
 	
 def main():
 	#print("main")
