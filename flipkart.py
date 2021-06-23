@@ -58,7 +58,7 @@ def main():
 	else:
 		mail_me(curr_price,previous_price)
 	put_current_price(str(curr_price))
-	#print("successfull")
+	print("successfull")
 	time.sleep(30)
 	main()
 
