@@ -36,19 +36,9 @@ def put_current_price(price):
 	file.close()
 
 def mail_me(curr_price,previous_price):
-	#print("mail_me")
-	#print(f"mailing {curr_price} {previous_price}")
-	try:
-		s = smtplib.SMTP('smtp.gmail.com', 587)
-		s.starttls()
-		s.login("mathewsamalp@gmail.com", "Am@190603")
-		message=f"Price droped in flipkart from {previous_price} to {curr_price}"
-		s.sendmail("mathewsamalp@gmail.com", "amalpmathews2003@gmail.com", message)
-		s.quit()
-	except:
-		pass
-		#print("mail not send")
-
+	print("mail_me")
+	print(f"mailing {curr_price} {previous_price}")
+	
 def main():
 	#print("main")
 	curr_price=int(float(get_current_price()))
