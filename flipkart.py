@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import smtplib
 import sendgrid
+import os
 
 def get_current_price():
 	#print("get_current_price")
