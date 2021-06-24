@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import time
 import smtplib
 
+previous_prices=[0]
+
 def get_current_price():
 	print("get_current_price")
 	url=r"https://www.flipkart.com/safari-mosaic-check-in-luggage-30-inch/p/itm136a30fb66bba?pid=STCEWDB3WYHZHFXD&lid=LSTSTCEWDB3WYHZHFXDDJR6MH"
@@ -16,26 +18,10 @@ def get_current_price():
 	return rupee
 
 def get_previous_prices():
-	print("get_previous_prices")
-	file=open("prices.txt","r")
-	previous_price=0
-	for line in file:
-		previous_price=line
-	file.close()
-	print(f"last_price={previous_price}")
-	try:
-		return previous_price
-	except:
-		return 0
+	return previous_prices[len(previous_prices)-1]
 
 def put_current_price(price):
-	print("put_current_price")
-	print(f"putting pricec{price}")
-	file =open("prices.txt","w")
-	file.write(price)
-	file.write("\n")
-	file.close()
-
+	previous_prices.append(price)
 def mail_me(curr_price,previous_price):
 	"""
 	print("mail_me")
