@@ -5,7 +5,7 @@ import time
 import smtplib
 import os
 
-previous_prices=[10000]
+previous_prices=[0]
 
 def get_current_price():
 	print("get_current_price")
