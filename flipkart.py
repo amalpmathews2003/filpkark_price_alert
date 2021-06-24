@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
+import os
 
 previous_prices=[0]
 
@@ -23,25 +24,14 @@ def get_previous_prices():
 def put_current_price(price):
 	previous_prices.append(price)
 def mail_me(curr_price,previous_price):
-	"""
-	print("mail_me")
-	print(f"mailing {curr_price} {previous_price}")
-	
-	s = smtplib.SMTP('smtp.gmail.com', 587)
-	s.starttls()
-	s.login("mathewsamalp@gmail.com", "Am@190603")
-	
-	s.sendmail("mathewsamalp@gmail.com", "amalpmathews2003@gmail.com", message)
-	s.quit()
-	"""
-	account_sid = 'AC5e6191cbffc187290e346dc24e6b82c1'
-	auth_token = '96a00d587ab6af8197d779f0b400a4d1'
+	account_sid = os.environ['account_sid']
+	auth_token = os.environ['auth_token']
 	client = Client(account_sid, auth_token)
 	body=f"Price droped in flipkart from {previous_price} to {curr_price}"
 	message = client.messages.create(
                               from_='+18326375819',
                               body =body,
-                              to ='+918547756528'
+                              to =os.environ['phone']
                           )
 		
 
